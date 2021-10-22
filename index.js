@@ -15,7 +15,7 @@ const cors = require('cors'); //giải quyết khác port giữa backend và fro
 
 const EmailService = require("./utils/EmailService");
 
-//mongodb+srv://tuannguyen:826049THang@cluster0.ohjvx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+mongodb+srv://tuannguyen:826049THang@cluster0.ohjvx.mongodb.net/backend-mybooks?retryWrites=true&w=majority
 
 //config email, video 10/14/2021, phut 1:12:22
 EmailService.init();
