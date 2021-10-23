@@ -14,9 +14,13 @@ const stockRoutes = require("./routes/stockRoutes");
 const cors = require('cors'); //giải quyết khác port giữa backend và frontend, video 10-20-2021, phút 1:31:26
 
 const EmailService = require("./utils/EmailService");
+const { limiter } = require("./middlewares/rateLimit");
 
-mongodb+srv://tuannguyen:826049THang@cluster0.ohjvx.mongodb.net/backend-mybooks?retryWrites=true&w=majority
+//MONGO_URI=mongodb://localhost:27017/mybook
 
+//mongodb+srv://tuannguyen:121592@cluster0.4ewgh.mongodb.net/backend_heroku?retryWrites=true&w=majority
+//MONGO_URI=mongodb://localhost:27017/mybook
+//heroku config:set MONGODB_URI="mongodb+srv://tuannguyen:121592@cluster0.4ewgh.mongodb.net/backend_heroku?retryWrites=true&w=majority"
 //config email, video 10/14/2021, phut 1:12:22
 EmailService.init();
 
@@ -35,8 +39,8 @@ connectDB()
 
 //routes
 app.use("/api/v1/todo", todoRoutes);
-app.use("/api/v1/book", bookRoutes);
-app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/book", limiter(100,6), bookRoutes);
+app.use("/api/v1/auth", limiter(10,6), authRoutes);
 app.use("/api/v1/category", categoryRoutes);
 /* app.use("/api/v1/stock", stockRoutes); */
 app.use("/api/v1/dictionary", stockRoutes);
