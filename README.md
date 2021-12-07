@@ -6,8 +6,9 @@
 ### Stack and Technology:
 - JavaScript
 - NodeJS
-- Express
+- Expressjs Framework
 - MongoDB
+- Mysql
 - Dependencies:
     + "axios": "^0.23.0"
     + "bcryptjs": "^2.4.3",
